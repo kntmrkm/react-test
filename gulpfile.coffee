@@ -71,14 +71,10 @@ gulp.task "js", ->
         # react
         { test: /\.jade$/, loader: 'react-jade-loader' },
         { test: /\.jsx$/, loader: 'jsx-loader' },
-        
-        # riot
-        # { test: /\.tag$/, loader: 'tag', query: { type: 'coffeescript' } },
-        # { test: /\.jade$/, loader: "jade-loader" },
         { test: /\.coffee$/, loader: "coffee-loader" },
+
         { test: /is_js/, loader: "imports?define=>undefined" },
         { test: /cssuseragent/, loader: "exports?cssua" },
-
         # { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
       ]
     plugins: [ # webpack用の各プラグイン
@@ -94,6 +90,13 @@ gulp.task "js", ->
   .pipe plumber()
   #.pipe uglify()
   .pipe gulp.dest paths.build
+
+gulp.task "jade", ->
+  gulp
+    .src "./*.jade"
+    .pipe plumber()
+    .pipe jade(pretty: true)
+    .pipe gulp.dest paths.build
 
 gulp.task "css", ->
   #gulp.src "./app/styles/mobile.scss"
@@ -130,13 +133,6 @@ gulp.task "lib", ->
     .pipe concat("lib.js")
     .pipe gulp.dest paths.build
 
-gulp.task "jade", ->
-  gulp
-    .src "./*.jade"
-    .pipe plumber()
-    .pipe jade(pretty: true)
-    .pipe gulp.dest paths.build
-
 gulp.task "watch", ["build", "server"], ->
   gulp.watch "app/**/*.js", ["js"]
   gulp.watch "app/**/*.jsx", ["js"]
@@ -155,7 +151,6 @@ gulp.task "build", ->
     "js"
     "css"
     "jade"
-    #"riot"
     #"lib"
     #"asset"
   )  

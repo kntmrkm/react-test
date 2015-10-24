@@ -17,7 +17,7 @@
     "superagent": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "material-ui": "latest"_
+    "material-ui": "latest"
   },
   "devDependencies": {
     "standard": "latest",
@@ -74,8 +74,8 @@
     "jsx-loader": "latest",
     "tag-loader": "latest",
     "react-jade-loader": "latest",
+    "react-tap-event-plugin": "latest",
     "karma": "latest",
-    "karma-riot": "latest",
     "karma-mocha": "latest",
     "karma-mocha-reporter": "latest",
     "expect.js": "latest"
